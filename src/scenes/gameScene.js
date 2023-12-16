@@ -3,8 +3,13 @@ export default class GameScene extends Phaser.Scene {
     super({ key: "GameScene" });
   }
 
+  preload() {
+    this.load.image("player_character", "./assets/player_character.png");
+  }
+
   create() {
-    this.add.text(100, 100, "Hello World", { fill: "#0f0" });
+    this.player = this.physics.add.sprite(100, 100, "player_character");
+    this.player.setCollideWorldBounds(true);
   }
 
   update() {}

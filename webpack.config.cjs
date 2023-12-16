@@ -40,7 +40,7 @@ module.exports = {
       patterns: [
         // Add additional folders to be built here
         { from: "./src/scenes", to: "scenes" },
-        // { from: "./src/assets", to: "assets" },
+        { from: "./src/assets", to: "assets" },
         // { from: "./src/data", to: "data" },
         // { from: "./src/scripts", to: "scripts" },
         // { from: "./src/classes", to: "classes" },

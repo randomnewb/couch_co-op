@@ -1,15 +1,15 @@
 {
-  "name": "template_project",
+  "name": "couch_co-op",
   "version": "0.0.1",
   "type": "module",
-  "description": "Description of the project",
+  "description": "A simple technical demo of couch co-op style controls",
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --mode development --entry ./src/game.js",
     "build": "webpack --mode production --entry ./src/game.js --output-path ./dist",
     "dev": "webpack --mode development --entry ./src/game.js --output-path ./dist"
   },
-  "author": "your_name_here",
+  "author": "randomnewb",
   "license": "ISC",
   "dependencies": {
     "easystarjs": "^0.4.4",
