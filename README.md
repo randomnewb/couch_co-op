@@ -15,3 +15,7 @@ Spin up a new Phaser 3 project in seconds with this template. Includes a basic w
 ### Usage
 
 - As you add additional folders, update the webpack.config.cjs file to include them when you build.
+
+### Try It Live On Itch.io
+
+- https://randomnewb.itch.io/couch-co-op-example
