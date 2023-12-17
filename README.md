@@ -1,8 +1,8 @@
-# Phaser3 JS Project Template
+# Couch Co-Op in Phaser3 JS
 
 ## About
 
-Spin up a new Phaser 3 project in seconds with this template. Includes a basic webpack config and a dev server.
+A technical demo for implementing the command pattern for movement and allowing couch co-op play in Phaser3 JS.
 
 ### Installing
 
