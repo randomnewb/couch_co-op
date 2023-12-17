@@ -18,7 +18,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create() {
-    this.add.text(20, 20, "Press 1 to create a new player", {
+    this.add.text(20, 20, "Press 1 to create a new player. Collect jewels!", {
       font: "25px Arial",
       fill: "yellow",
     });
@@ -37,10 +37,11 @@ export default class GameScene extends Phaser.Scene {
       if (this.players.length < this.keySets.length) {
         const player = this.physics.add.sprite(
           100 * (this.players.length + 1),
-          100,
+          200,
           "player_character"
         );
         player.setCollideWorldBounds(true);
+        player.setScale(2);
         player.cursors = this.input.keyboard.addKeys({
           up: this.keyCodes[this.keySets[this.players.length].up],
           down: this.keyCodes[this.keySets[this.players.length].down],
@@ -48,6 +49,13 @@ export default class GameScene extends Phaser.Scene {
           right: this.keyCodes[this.keySets[this.players.length].right],
         });
         player.score = 0;
+        player.setTint(
+          Phaser.Display.Color.GetColor(
+            Math.floor(Math.random() * 255),
+            Math.floor(Math.random() * 255),
+            Math.floor(Math.random() * 255)
+          )
+        );
         this.players.push(player);
 
         const playerIndex = this.players.length;
@@ -73,6 +81,14 @@ export default class GameScene extends Phaser.Scene {
             this.jewel.x = Phaser.Math.Between(100, 700);
             this.jewel.y = Phaser.Math.Between(100, 500);
 
+            this.jewel.setTint(
+              Phaser.Display.Color.GetColor(
+                Math.floor(Math.random() * 255),
+                Math.floor(Math.random() * 255),
+                Math.floor(Math.random() * 255)
+              )
+            );
+
             console.log(`Player ${playerIndex} grabbed the jewel`);
           },
           null,
@@ -85,6 +101,16 @@ export default class GameScene extends Phaser.Scene {
       Phaser.Math.Between(100, 700),
       Phaser.Math.Between(100, 500),
       "jewel"
+    );
+
+    this.jewel.setScale(2);
+
+    this.jewel.setTint(
+      Phaser.Display.Color.GetColor(
+        Math.floor(Math.random() * 255),
+        Math.floor(Math.random() * 255),
+        Math.floor(Math.random() * 255)
+      )
     );
 
     this.players.forEach(player => {
