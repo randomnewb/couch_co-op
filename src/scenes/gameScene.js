@@ -1,3 +1,5 @@
+import * as Colyseus from "colyseus.js";
+
 export default class GameScene extends Phaser.Scene {
   constructor() {
     super({ key: "GameScene" });
@@ -18,6 +20,33 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create() {
+    this.client = new Colyseus.Client("ws://localhost:2567");
+
+    this.client
+      .joinOrCreate("room_name")
+      .then(room => {
+        console.log(room.sessionId, "joined", room.name);
+
+        room.onStateChange(state => {
+          console.log(room.name, "has new state:", state);
+        });
+
+        room.onMessage("message_type", message => {
+          console.log(this.client.id, "received on", room.name, message);
+        });
+
+        room.onError((code, message) => {
+          console.log(this.client.id, "couldn't join", room.name);
+        });
+
+        room.onLeave(code => {
+          console.log(this.client.id, "left", room.name);
+        });
+      })
+      .catch(e => {
+        console.log("JOIN ERROR", e);
+      });
+
     this.add.text(20, 20, "Press 1 to create a new player. Collect jewels!", {
       font: "25px Arial",
       fill: "yellow",
